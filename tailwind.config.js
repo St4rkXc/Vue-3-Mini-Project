@@ -3,15 +3,7 @@ export default {
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     theme: {
         extend: {
-            colors: {
-                primary: '#25252B',
-                secondary: '#636376',
-                text: '#25252B',
-                success: '#75AD42',
-                succesbg: '#DDEBD0',
-                processbg: '#FFF4CC',
-                process: '#E5B300',
-            },
+            colors: {},
         },
         fontSize: {
             xs: '14px',
@@ -27,8 +19,6 @@ export default {
         themes: [
             {
                 mytheme: {
-                    primary: '#25252B',
-                    secondary: '#636376',
                     'base-100': '#EFEFEF' /* background image */,
                 },
             },
