@@ -1,6 +1,3 @@
-Got it! Here’s a polished README tailored for your portfolio, showcasing the mini projects you plan to build with Vue 3, Tailwind CSS, and DaisyUI:
-
----
 
 # My Portfolio: Vue 3 Mini Projects
 
