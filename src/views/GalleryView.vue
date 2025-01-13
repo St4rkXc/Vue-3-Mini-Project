@@ -25,6 +25,7 @@ const addPhoto = () => {
         url: newPhotoUrl.value,
         isFavorite: false,
     }
+    // Fungsi untuk menambahkan foto baru ke dalam array photos
     if (newPhotoUrl.value !== '') {
         photos.value.push(Photo)
         newPhotoUrl.value = ''
