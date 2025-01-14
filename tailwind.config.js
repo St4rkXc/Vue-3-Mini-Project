@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
@@ -19,11 +20,11 @@ export default {
         themes: [
             {
                 mytheme: {
-                    'base-100': '#EFEFEF' /* background image */,
+                    'base-100': '#FFFFFF' /* background image */,
                 },
             },
-            'dark',
+            
         ],
     },
-    // plugins: [require('daisyui')],
+    plugins: [require('daisyui')],
 }
