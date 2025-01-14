@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onBeforeMount, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 const tasks = ref([
     {
         id: 1,
@@ -24,17 +24,33 @@ const tasks = ref([
 onMounted(() => {
     newTaskInput.value.focus()
 })
-onBeforeMount(() => {
-    // console.log('Component will mount')
-})
+
+const addTask = (e) => {
+    e.preventDefault()
+    if (newTask.value !== '' && newPriority.value !== '') {
+        const task = {
+            id: tasks.value.length + 1,
+            description: newTask.value,
+            priority: newPriority.value,
+            isDone: false,
+        }
+        tasks.value.unshift(task)
+        newTask.value = ''
+        newPriority.value = ''
+        newTaskInput.value.focus()
+    }
+}
+
 const newTaskInput = ref(null)
+const newTask = ref('')
+const newPriority = ref('')
 </script>
 <template>
-    <div class="p-4">
-        <form class="mb-4 flex space-x-2">
+    <div class="p-4 container mx-auto">
+        <form class="mb-4 flex space-x-2" @submit="addTask">
             <!-- Adding tasks form -->
-            <input ref="newTaskInput" class="border rounded p-2 flex-grow" placeholder="Add new task" />
-            <select class="border rounded p-2">
+            <input v-model="newTask" ref="newTaskInput" class="border rounded p-2 flex-grow" placeholder="Add new task" />
+            <select class="border rounded p-2" v-model="newPriority">
                 <option disabled value="">Select priority</option>
                 <option>High</option>
                 <option>Medium</option>
@@ -54,16 +70,16 @@ const newTaskInput = ref(null)
         <div v-else>
             <h3 class="text-xl font-bold mb-2">Your Tasks</h3>
             <!-- This is a list of tasks -->
-            <div v-for="(task, index) in tasks" :key="task.id" class="space-y-4">
-                <div class="flex items-center justify-between p-2 border rounded mt-4">
+            <div v-for="(task, index) in tasks" :key="task.id" class=" flex items-center justify-between p-2 border rounded mt-4 border-l-4 " :class="{'line-through text-gray-400 border-l-gray-200' : task.isDone, 'border-l-red-500': task.priority === 'High', 'border-l-yellow-500': task.priority === 'Medium', 'border-l-green-500': task.priority === 'Low'}">
+                <div class="">
                     <input type="checkbox" class="mr-2" v-model="task.isDone" />
                     <!-- Task description -->
                     <span class="flex-grow">
                         {{ task.description }}
                     </span>
                     <!-- Removing a task -->
-                    <button class="remove-button text-red-500">✖</button>
                 </div>
+                <button class="remove-button text-red-500">✖</button>
             </div>
         </div>
     </div>
