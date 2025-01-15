@@ -46,6 +46,7 @@ const removePhoto = (index) => {
 </script>
 <template>
     <div class="container mx-auto mt-12">
+        <p class="text-[14px] text-gray-400 font-semibold mb-6">*Under Development, Wait for the next feature</p>
         <form class="mb-5 gap-x-2" @submit.prevent="addPhoto">
             <input
                 v-model="newPhotoUrl"

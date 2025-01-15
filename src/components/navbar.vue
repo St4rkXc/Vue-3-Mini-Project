@@ -12,6 +12,7 @@
                 <div class="space-x-6">
                     <router-link to="/quizz" class="text-base font-semibold">Quizz</router-link>
                     <router-link to="/task-manager" class="text-base font-semibold">Task Manager</router-link>
+                    <router-link to="/gallery" class="text-base font-semibold">Gallery</router-link>
                 </div>
             </div>
         </nav>

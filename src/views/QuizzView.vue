@@ -23,6 +23,7 @@ const interval = setInterval(check, 5000)
 
 <template>
     <div class="container mx-auto">
+        <p class="text-[14px] text-gray-400 font-semibold">*Under Development, Wait for the next feature</p>
         <div>
             <div class="text-2xl font-semibold">
                 {{ areWeDone ? 'Your Score ' + score : 'Next question' }}
