@@ -46,6 +46,13 @@ const addTask = (e) => {
         alert('Please fill in the task and priority fields')
     }
 }
+
+const deleteAllTask = () => {
+    tasks.value = []
+}
+
+
+
 const deleteTask = (index) => {
     tasks.value.splice(index, 1)
 }
@@ -98,6 +105,7 @@ console.log(filter.value)
                 <option>Low</option>
             </select>
             <button type="submit" class="bg-blue-500 text-white rounded p-3">Add Task</button>
+            <button type="submit" class="bg-red-500 text-white rounded p-3" @click="deleteAllTask">Delete Task</button>
         </form>
 
         <!-- Task filtering -->
