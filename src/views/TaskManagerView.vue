@@ -25,10 +25,18 @@ const tasks = ref([
     },
 ])
 
+const newTaskInput = ref(null)
+const newTask = ref('')
+const newPriority = ref('')
+const filter = ref('')
+// Search task
+const filteredTask = computed(() => tasks.value.filter((task) => task.description.toLowerCase().includes(filter.value.toLowerCase())))
+
 onMounted(() => {
     newTaskInput.value.focus()
 })
 
+// Add new task
 const addTask = (e) => {
     e.preventDefault()
     if (newTask.value !== '' && newPriority.value !== '') {
@@ -47,22 +55,17 @@ const addTask = (e) => {
     }
 }
 
+// Delete all tasks
 const deleteAllTask = () => {
     tasks.value = []
 }
 
-
-
+// Delete a task
 const deleteTask = (index) => {
     tasks.value.splice(index, 1)
 }
 
-const newTaskInput = ref(null)
-const newTask = ref('')
-const newPriority = ref('')
-const filter = ref('')
-// Search task
-const filteredTask = computed(() => tasks.value.filter((task) => task.description.toLowerCase().includes(filter.value.toLowerCase())))
+
 
 // Wacthing the changes of Add New Task Input
 watch(
@@ -73,6 +76,7 @@ watch(
     },
     { immediate: true },
 )
+
 // Watching the changes of Add New Task Filter
 watch(filter, (oldValue, newValue) => {
     console.log('Old value:', oldValue)
